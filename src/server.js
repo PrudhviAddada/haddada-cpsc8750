@@ -12,8 +12,27 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // The main page of our website
+app.use(express.static('public'));
+const cookieParser = require('cookie-parser');
+app.set('view engine', 'ejs');
+app.use(cookieParser());
+let nextVisitorId = 1;
+let currdate = new Date();
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  console.log(req.cookies);
+  if(req.cookies['visitorId']){
+  res.cookie('visitorId', nextVisitorId);}
+  else
+  res.cookie('visitorId', nextVisitorId++);
+  res.cookie('visited', Date.now().toString());
+  res.render('welcome', {
+    name: req.query.name || "World",
+    datetime: req.query.datetime || new Date().toLocaleString(),
+    visit: req.query.visit || nextVisitorId,
+    lasttime: req.query.lasttime || Math.round((new Date().getTime() - currdate.getTime()) / 1000),
+  });
+  currdate = new Date();
+
 });
 
 // Start listening for network connections
