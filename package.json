@@ -11,16 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/PrudhviAddada/haddada-cpsc8750.git"
   },
-  "author": "Prudhvi",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PrudhviAddada/haddada-cpsc8750/issues"
   },
   "homepage": "https://github.com/PrudhviAddada/haddada-cpsc8750#readme",
   "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "ejs": "^3.1.8",
-    "express": "^4.18.1",
-    "html-entities": "^2.3.3"
+    "express": "^4.18.1"
   }
 }
